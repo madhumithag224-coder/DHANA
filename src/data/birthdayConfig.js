@@ -1,0 +1,28 @@
+// ✏️ Edit all personal text here. No need to touch components.
+export const config = {
+  name: 'Chellam',
+  welcomeTitle: 'Happy Birthday, My Thangameyyy! 💗',
+  welcomeSubtitle: 'A little world of memories, happiness and endless love, made specially for you.',
+  openButton: 'Open Your Special Surprise 🎁',
+  galleryTitle: 'Our Beautiful Memories',
+  videoTitle: 'Our Little Video Memories 🎬💗',
+  letterTitle: 'A Little Letter From My Heart',
+  letterHint: 'Tap the envelope to open 💌',
+  letter: [
+    'Dear Thangameyyy,',
+    'You are one of the most precious parts of my life. every silly conversation, every laugh and every moment we have shared will always remain special to me.',
+    'No matter where life takes us, you will always be my favourite person.',
+    'Thank you for all the beautiful memories. I wish you endless happiness, good health, success and everything your heart dreams of.',
+    'Keep smiling, keep shining and always be the happiest girl.',
+    'akka alwys there for you and alwys love you... 💗',
+  ],
+  cakeTitle: 'Make a Wish, Birthday Girl! ✨',
+  cakeButton: 'Blow the Candles 🎂',
+  cakeMessage: 'Happy Birthday, My Thangameyyy! May all your dreams come true. You deserve all the happiness in this world! 💗',
+  finalTitle: 'Our Memories Forever ✨',
+  finalMessage: 'Countless memories, endless laughter and one beautiful bond. No matter how many years pass, these memories will always stay close to my heart. Love you forever! 💗',
+  replayButton: 'Replay Our Memories 💕',
+  song: { title: 'Chellame Magale', from: 'Baththa', file: '/audio/InShot_20251107_001636835.mp3', showPlayer: false },
+  startMusicOnOpen: true,
+  footer: 'Made with all my love, just for you 💗',
+}

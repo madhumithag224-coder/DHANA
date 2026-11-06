@@ -9,6 +9,7 @@ Run: `npm install` then `npm run dev`. Deploy: Netlify (`npm run build`, publish
 4. **Captions** → edit `title` and `caption` in the same entry.
 5. **Add/remove photos** → copy or delete a `{ type: 'image', ... }` line. Give each a unique `id`. Order in the file = order on the site.
 6. **Add/remove videos** → same with `{ type: 'video', src, poster, ... }` lines.
+   All MP4s are stored with Git LFS. Netlify pulls the original files before the build; the build creates H.264/AAC copies under `dist` so browsers can play them. The uploads in `public/` are not modified.
 7. **Song** → save your own legally obtained file as `public/audio/chellame-magale.mp3` (or change the path in `src/data/birthdayConfig.js`). The site works without it.
 8. **80-file limit** → photos + videos combined. Extra entries are ignored and a console warning tells you how many to remove.
 

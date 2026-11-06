@@ -82,6 +82,7 @@ const raw = [
   { id: 131, type: 'video', src: '/media/videos/Snapchat-1198221205.mp4', poster: '', title: 'Memories' },
   { id: 132, type: 'video', src: '/media/videos/Snapchat-1394910810.mp4', poster: '', title: 'Together' },
   { id: 133, type: 'video', src: '/media/videos/VID-20261105-WA0028.mp4', poster: '', title: 'Happiness' },
+  { id: 134, type: 'video', src: '/media/posters/lv_0_20261105202636.mp4', poster: '', title: 'Birthday Memories \u{1f3ac}' },
 ]
 
 const clean = raw.filter((m) => m && m.src && (m.type === 'image' || m.type === 'video'))

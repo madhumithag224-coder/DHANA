@@ -8,25 +8,34 @@ import Reveal from './Reveal'
 function VideoCard({ item, index, onOpen }) {
   const [failed, setFailed] = useState(false)
   const [playing, setPlaying] = useState(false)
+  const [playbackError, setPlaybackError] = useState(false)
   const videoRef = useRef(null)
+  const hoveredRef = useRef(false)
+  const poster = item.poster || (import.meta.env.PROD && `/media/posters/${item.src.split('/').pop().replace(/\.mp4$/i, '.jpg')}`)
   const playPreview = () => {
     const video = videoRef.current
     if (!video) return
-    video.play().then(() => setPlaying(true)).catch(() => setPlaying(false))
+    hoveredRef.current = true
+    setPlaybackError(false)
+    video.play().then(() => {
+      if (!hoveredRef.current) video.pause()
+    }).catch((error) => {
+      if (hoveredRef.current && error.name !== 'AbortError') setPlaybackError(true)
+    })
   }
   const stopPreview = () => {
     const video = videoRef.current
     if (!video) return
+    hoveredRef.current = false
     video.pause()
-    video.currentTime = 0
-    setPlaying(false)
   }
   return (
-    <div className="card vcard" onClick={() => onOpen(item)} onMouseEnter={playPreview} onMouseLeave={stopPreview} tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpen(item)}>
+    <div className="card vcard" role="button" onClick={() => onOpen(item)} onPointerEnter={(e) => e.pointerType === 'mouse' && playPreview()} onPointerLeave={(e) => e.pointerType === 'mouse' && stopPreview()} tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && onOpen(item)}>
       <div className="card-img">
-        {failed ? <Placeholder item={{ ...item, ratio: 'landscape' }} index={index + 3} label={false} />
-          : <video ref={videoRef} src={item.src} poster={item.poster || undefined} muted playsInline preload="metadata" onError={() => setFailed(true)} />}
+        {failed ? <div className="video-fallback"><Placeholder item={{ ...item, ratio: 'landscape' }} index={index + 3} label={false} /><span>Video couldn't be loaded</span></div>
+          : <video ref={videoRef} poster={poster || undefined} muted playsInline loop preload="none" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setFailed(true)}><source src={item.src} type="video/mp4" /></video>}
         <span className={`play ${playing ? 'is-playing' : ''}`}><Play fill="#fff" /></span>
+        {playbackError && !failed && <span className="playback-error" role="status">Preview unavailable — open to play</span>}
       </div>
       <h3 className="script">{item.title}</h3>
     </div>

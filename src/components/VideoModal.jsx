@@ -19,7 +19,7 @@ export default function VideoModal({ item, onClose }) {
       <div className="lb-body vid" onClick={(e) => e.stopPropagation()}>
         {err ? <div className="vid-missing">🎬<p>This video isn't added yet.<br />Put it in public/media/videos/ 💗</p></div>
           : <video ref={ref} src={item.src} poster={item.poster} controls autoPlay playsInline preload="auto" onError={() => setErr(true)} />}
-        <h3 className="script">{item.title}</h3><p>{item.caption}</p>
+        <h3 className="script">{item.title}</h3>
       </div>
     </div>
   )

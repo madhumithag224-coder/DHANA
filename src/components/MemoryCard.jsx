@@ -20,7 +20,6 @@ export default function MemoryCard({ item, index, onOpen }) {
         {failed ? <Placeholder item={item} index={index} /> : <img src={item.src} alt={item.title} loading="lazy" decoding="async" onError={() => setFailed(true)} />}
       </div>
       <h3 className="script">{item.title}</h3>
-      <figcaption>{item.caption}</figcaption>
     </figure>
   )
 }

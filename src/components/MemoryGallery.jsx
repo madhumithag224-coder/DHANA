@@ -25,7 +25,7 @@ function Lightbox({ index, setIndex }) {
       <button className="lb-btn l" aria-label="Previous" onClick={(e) => { e.stopPropagation(); prev() }}><ChevronLeft /></button>
       <div className="lb-body" key={item.id} onClick={(e) => e.stopPropagation()}>
         {failed[item.id] ? <div className="lb-ph"><Placeholder item={item} index={index} /></div> : <img src={item.src} alt={item.title} onError={() => setFailed((f) => ({ ...f, [item.id]: true }))} />}
-        <h3 className="script">{item.title}</h3><p>{item.caption}</p><small>{index + 1} / {n}</small>
+        <h3 className="script">{item.title}</h3><small>{index + 1} / {n}</small>
       </div>
       <button className="lb-btn r" aria-label="Next" onClick={(e) => { e.stopPropagation(); next() }}><ChevronRight /></button>
     </div>

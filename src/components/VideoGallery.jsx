@@ -28,7 +28,7 @@ function VideoCard({ item, index, onOpen }) {
           : <video ref={videoRef} src={item.src} poster={item.poster || undefined} muted playsInline preload="metadata" onError={() => setFailed(true)} />}
         <span className={`play ${playing ? 'is-playing' : ''}`}><Play fill="#fff" /></span>
       </div>
-      <h3 className="script">{item.title}</h3><figcaption>{item.caption}</figcaption>
+      <h3 className="script">{item.title}</h3>
     </div>
   )
 }
